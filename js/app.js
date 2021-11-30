@@ -63,16 +63,23 @@ function showCars(autos) {
 
     autos.forEach(car => {
         const { marca, modelo, year, precio, puertas, color, transmision } = car;
-        const HTMLCar = document.createElement('p');
-        HTMLCar.textContent = `
-                ${marca}
-                - ${modelo}
-                - ${year}
-                - $${precio}
-                - ${puertas}
-                - ${color}
-                - ${transmision}
-            `;
+        const HTMLCar = document.createElement('div');
+        HTMLCar.classList.add('card', 'col-md-3', 'm-1','bg-secondary');
+        HTMLCar.innerHTML = `
+            <div class="card-header text-secondary">${marca}</div>
+            <div class="card-body">
+                <p>Información del auto</p>
+                <p>
+                    ${marca} 
+                    - ${modelo}
+                    - ${year}
+                    - $${precio}
+                    - ${puertas}
+                    - ${color}
+                    - ${transmision} 
+                </p>
+            </div>
+        `;
         outcome.appendChild(HTMLCar)
     });
 }
@@ -104,8 +111,8 @@ function carFilter() {
 function noResultado(){
     limpiarHtml();
     const noResultado = document.createElement('div');
-    noResultado.classList.add('alerta', 'error');
-    noResultado.textContent = 'No hay resultados';
+    noResultado.classList.add('alert', 'alert-danger', 'text-center');
+    noResultado.textContent = 'No hay resultados que coincidan con su busqueda.';
     outcome.appendChild(noResultado);
 }
 function filtrarMarca(auto) {
